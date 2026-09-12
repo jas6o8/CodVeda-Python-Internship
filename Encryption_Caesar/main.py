@@ -1,5 +1,6 @@
 #this program encrypts a message using the caesar cipher method
 import os
+from docx import Document 
 
 print("Welcome to the Caesar Cipher Program!")
 letters = "abcdefghijklmnopqrstuvwxyz"
@@ -35,8 +36,14 @@ if text =='e' or text == 'd':
     inputpath = os.path.join(script_dir, inputfile)#looks for the file in the same directory as the script
 
     try:
-        with open(inputpath,"r") as f:
-            message=f.read()
+        if inputfile.endswith('.docx'):
+            doc = Document(inputpath)
+            
+            message = "\n".join([p.text for p in doc.paragraphs])
+        else:
+        
+            with open(inputpath, "r") as f:
+                message = f.read()
     except FileNotFoundError:
         print(f"Error: The file '{inputfile}' was not found.")
         exit()
