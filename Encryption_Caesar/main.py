@@ -65,3 +65,4 @@ if text =='e' or text == 'd':
 else:
     print("Invalid input. Please choose 'e' for encrypt or 'd' for decrypt.")
 
+ 
